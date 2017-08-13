@@ -8,5 +8,5 @@ EBUILDS=($(git diff --name-only --diff-filter=d "${TRAVIS_BRANCH:-master}" | gre
 # Emerge the ebuilds
 for EBUILD in "${EBUILDS[@]}"
 do
-  docker run --rm -ti -v "${HOME}"/.portage-pkgdir:/usr/portage/packages -v "${PWD}":/usr/local/portage -w /usr/local/portage gentoo/stage3-amd64:latest /usr/local/portage/tests/emerge_ebuild.sh "${EBUILD}"
+  docker run --rm -ti -v "${HOME}"/.portage-pkgdir:/usr/portage/packages -v "${PWD}":/usr/local/portage -w /usr/local/portage gentoo/stage3-amd64:latest /usr/local/portage/tests/resources/emerge_ebuild.sh "${EBUILD}"
 done
